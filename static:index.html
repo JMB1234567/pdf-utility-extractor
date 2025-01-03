@@ -1,132 +1,114 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.2">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px '.AppleSystemUIFontMonospaced Light'; color: #3c3c3b; -webkit-text-stroke: #3c3c3b}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px '.AppleSystemUIFontMonospaced Light'; color: #3c3c3b; -webkit-text-stroke: #3c3c3b; min-height: 15.0px}
-    span.s1 {font-kerning: none}
-    span.s2 {font-kerning: none; color: #e4aa08; -webkit-text-stroke: 0px #e4aa08}
-  </style>
+    <title>Utility Bill Data Extractor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .upload-container {
+            text-align: center;
+            padding: 30px;
+            border: 2px dashed #4CAF50;
+            border-radius: 10px;
+            margin: 20px 0;
+            background-color: #f9f9f9;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        #loading {
+            display: none;
+            margin-top: 20px;
+            color: #666;
+        }
+        .file-input {
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    </style>
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;Aeronergie Utility Bill Data Extractor&lt;/title&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>body {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-family: Arial, sans-serif;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>max-width: 800px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin: 0 auto;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 20px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #f5f5f5;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.container {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: white;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 30px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 10px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>box-shadow: 0 2px 4px rgba(0,0,0,0.1);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.upload-container {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-align: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 30px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border: 2px dashed #4CAF50;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 10px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin: 20px 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #f9f9f9;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.button {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #4CAF50;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: white;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>padding: 12px 24px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border: none;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>border-radius: 5px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>cursor: pointer;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>font-size: 16px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transition: background-color 0.3s;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.button:hover {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background-color: #45a049;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#loading {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>display: none;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-top: 20px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: #666;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.file-input {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>h1 {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>color: #333;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>text-align: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>margin-bottom: 30px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div </span><span class="s2">class</span><span class="s1">="container"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h1&gt;Utility Bill Data Extractor&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div </span><span class="s2">class</span><span class="s1">="upload-container"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;form </span><span class="s2">id</span><span class="s1">="uploadForm"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div </span><span class="s2">class</span><span class="s1">="file-input"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;input </span><span class="s2">type</span><span class="s1">="file" </span><span class="s2">id</span><span class="s1">="pdfFile" </span><span class="s2">accept</span><span class="s1">=".pdf" </span><span class="s2">required</span><span class="s1">&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;button </span><span class="s2">type</span><span class="s1">="submit" </span><span class="s2">class</span><span class="s1">="button"&gt;Process PDF&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/form&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div </span><span class="s2">id</span><span class="s1">="loading"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p&gt;Processing your PDF... Please wait.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p&gt;This may take a few moments.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.getElementById('uploadForm').addEventListener('submit', async (e) =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>e.preventDefault();</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const loading = document.getElementById('loading');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const button = document.querySelector('.button');</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>loading.style.display = 'block';</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>button.disabled = true;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>button.style.backgroundColor = '#cccccc';</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const formData = new FormData();</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>formData.append('file', document.getElementById('pdfFile').files[0]);</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>try {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const response = await fetch('/upload/', {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>method: 'POST',</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>body: formData</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (response.ok) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const blob = await response.blob();</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const url = window.URL.createObjectURL(blob);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const a = document.createElement('a');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>a.href = url;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>a.download = 'utility_data.xlsx';</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>document.body.appendChild(a);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>a.click();</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>window.URL.revokeObjectURL(url);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>a.remove();</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>} else {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>alert('Error processing the PDF. Please try again.');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} catch (error) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>alert('Error uploading file. Please try again.');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} finally {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>loading.style.display = 'none';</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>button.disabled = false;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>button.style.backgroundColor = '#4CAF50';</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+    <div class="container">
+        <h1>Utility Bill Data Extractor</h1>
+        <div class="upload-container">
+            <form id="uploadForm">
+                <div class="file-input">
+                    <input type="file" id="pdfFile" accept=".pdf" required>
+                </div>
+                <button type="submit" class="button">Process PDF</button>
+            </form>
+            <div id="loading">
+                <p>Processing your PDF... Please wait.</p>
+                <p>This may take a few moments.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const loading = document.getElementById('loading');
+            const button = document.querySelector('.button');
+            
+            loading.style.display = 'block';
+            button.disabled = true;
+            button.style.backgroundColor = '#cccccc';
+            
+            const formData = new FormData();
+            formData.append('file', document.getElementById('pdfFile').files[0]);
+            
+            try {
+                const response = await fetch('/upload/', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'utility_data.xlsx';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    a.remove();
+                } else {
+                    alert('Error processing the PDF. Please try again.');
+                }
+            } catch (error) {
+                alert('Error uploading file. Please try again.');
+            } finally {
+                loading.style.display = 'none';
+                button.disabled = false;
+                button.style.backgroundColor = '#4CAF50';
+            }
+        });
+    </script>
 </body>
 </html>
